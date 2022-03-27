@@ -22,6 +22,6 @@ float orbital_math::GForceY(planet plant1, planet plant2) {
 }
 
 // TODO : Correct this equation 
-float planetVelocity(planet p , float gForce,float timestamp) {
+float orbital_math::planetVelocity(planet p , float gForce,float timestamp) {
     return gForce * timestamp / p.getMass();
 }

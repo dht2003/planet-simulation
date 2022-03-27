@@ -1,31 +1,30 @@
 #pragma once 
 
-#include <utility>
 #include <cmath>
+#include <SDL2/SDL.h>
+#include "vector2d.hpp"
 
 class planet {
     private:
-        std::pair<int,int> _position;
+        vector2d<int> _position;
         float _radius;
         float _mass;
-        float _xVelocity;
-        float _yVelocity;
+        vector2d<float> _velocity;
         SDL_Color _color;
 
     public:
-        int getX();
-        int getY();
-        std::pair<int,int> getPosition();
+        int getX() const;
+        int getY() const;
+        vector2d<int> getPosition();
         void setX(int x);
         void setY(int y);
         float getRadius();
-        float getMass();
-        float getXVel();
-        float getYVel();
+        float getMass() const;
+        float getXVel() const;
+        float getYVel() const;
         void setXVel(float xVel);
         void setYVel(float yVel);
-        void addXVVel(float xVel);
-        add addYVel(float yVel);
+        void addVelocity(vector2d<float> velocity);
         SDL_Color getPlanetColor();
         void setPlanetColor(SDL_Color color);
 };

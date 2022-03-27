@@ -1,26 +1,28 @@
 #include "planet.hpp"
 
-int planet::getX() { return _position.first; }
+int planet::getX() const { return _position.getX(); }
 
-int planet::getY() {return _position.second; }
+int planet::getY() const {return _position.getY(); }
 
-std::pair<int,int> planet::getPosition()  {return _position; }
+vector2d<int> planet::getPosition()  {return _position; }
 
-void planet::setX(int x) { _position.first = x; }
+void planet::setX(int x) { _position.setX(x); }
 
-void planet::setY(int y) {_position.second = y; }
+void planet::setY(int y) {_position.setY(y); }
 
 float planet::getRadius() { return _radius; }
 
-float planet::getMass() {return _mass; }
+float planet::getMass() const {return _mass; }
 
-float planet::getXVel() {return _xVelocity; }
+float planet::getXVel() const {return _velocity.getX(); }
 
-float planet::getYVel() {return _yVelocity; }
+float planet::getYVel() const {return _velocity.getY(); }
 
-void planet::setXVel(float xVel) { _xVelocity = xVel; }
+void planet::setXVel(float xVel) { _velocity.setX(xVel) ; }
 
-void planet::setYVel(float yVel) { _yVelocity = yVel; }
+void planet::setYVel(float yVel) { _velocity.setY(yVel); }
+
+void planet::addVelocity(vector2d<float> velocity) { _velocity = _velocity + velocity; }
 
 SDL_Color planet::getPlanetColor() {return _color; }
 

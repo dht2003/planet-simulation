@@ -4,24 +4,27 @@ void PlanetarySystem::add_planet(planet p) {
     _planets.push_back(p);
 }
 
-planet PlanetarySystem::getPlanet(unsiged int index) {
+planet PlanetarySystem::getPlanet(unsigned int index) {
     if (index >= _planets.size()) 
-        throw std::invalid_argument("[Error] Index out of planets list")
+        throw std::invalid_argument("[Error] Index out of planets list");
+    return _planets[index];
 }
 
 void PlanetarySystem::updateSystem() {
     if (_planets.empty()) return;
-    for (int i = 0; i < _planets.size(); i++) {
+    for (std::size_t i = 0; i < _planets.size(); i++) {
         planet planet1 = getPlanet(i);
-        float sumGforceX = 0;
-        float sumGforceY = 0;
-        for (int j = 0; j < _planets.size(); j++) {
+        float sumForceX = 0;
+        float sumForceY = 0;
+        for (std::size_t j = 0; j < _planets.size(); j++) {
             if (j == i) continue;
             planet planet2 = getPlanet(j);
-            sumGforceX += orbital_math::GForceX(planet1,planet2);
-            sumGforceY += orbital_math::GForceY(planet1,planet2);
+            sumForceX += orbital_math::GForceX(planet1,planet2);
+            sumForceY += orbital_math::GForceY(planet1,planet2);
         }
-        planet1.addXVVel(orbital_math::planetVelocity(planet1,sumGforceX,orbital_math::TIMESSTAMP));
-        planet1.addYVVel(orbital_math::planetVelocity(planet1,sumGforceY,orbital_math::TIMESSTAMP));
+        vector2d<float> planet_velocity;
+        planet_velocity.setX(orbital_math::planetVelocity(planet1,sumForceX,orbital_math::TIMESSTAMP));
+        planet_velocity.setY(orbital_math::planetVelocity(planet1,sumForceY,orbital_math::TIMESSTAMP));
+        planet1.addVelocity(planet_velocity);
     }
 }

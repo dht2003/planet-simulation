@@ -2,8 +2,11 @@
 
 #include <cmath>
 #include <vector>
+#include <stdexcept>
+#include <cstddef>
 #include "planet.hpp"
 #include "orbital_math.hpp"
+#include "vector2d.hpp"
 
 class PlanetarySystem {
     private:
@@ -11,6 +14,6 @@ class PlanetarySystem {
     
     public: 
         void add_planet(planet p);
-        planet getPlanet(unsiged int index);
+        planet getPlanet(unsigned int index);
         void updateSystem();
-}
+};
