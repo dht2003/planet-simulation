@@ -8,6 +8,8 @@ namespace orbital_math {
 
     const double AU = 1.495978707E11; // TODO
 
+    const double TIMESSTAMP = 0;
+
     float distance(planet plant1, planet plant2);
 
     float theta(planet plant1, planet plant2);

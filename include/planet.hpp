@@ -1,6 +1,5 @@
 #pragma once 
 
-#include <SDL2/SDL.h>
 #include <utility>
 #include <cmath>
 
@@ -25,6 +24,8 @@ class planet {
         float getYVel();
         void setXVel(float xVel);
         void setYVel(float yVel);
+        void addXVVel(float xVel);
+        add addYVel(float yVel);
         SDL_Color getPlanetColor();
         void setPlanetColor(SDL_Color color);
 };

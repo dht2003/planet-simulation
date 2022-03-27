@@ -21,6 +21,7 @@ float orbital_math::GForceY(planet plant1, planet plant2) {
     return  GForce(plant1,plant2) * std::sin(theta(plant1,plant2));
 }
 
+// TODO : Correct this equation 
 float planetVelocity(planet p , float gForce,float timestamp) {
     return gForce * timestamp / p.getMass();
 }
