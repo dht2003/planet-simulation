@@ -7,7 +7,7 @@
 
 class Entity {
     public:
-        Entity(vector2d<int> position,int width, int height,SDL_Texture *texture);
+        Entity(int x, int y,int width, int height,SDL_Texture *texture);
         int getX() const;
         int getY() const;
         int getWidth() const;

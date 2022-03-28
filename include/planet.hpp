@@ -12,7 +12,7 @@ class planet : public Entity  {
         vector2d<float> _velocity;
 
     public:
-        planet(vector2d<int> position,float radius,float mass,SDL_Texture *texture);
+        planet(int x, int y,float radius,float mass,SDL_Texture *texture);
         float getRadius();
         float getMass() const;
         float getXVel() const;

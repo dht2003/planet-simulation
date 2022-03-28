@@ -1,11 +1,11 @@
 #include "Entity.hpp"
 
-Entity::Entity(vector2d<int> position,int width,int height,SDL_Texture *texrue)  
-: _position(position), _width(width),_height(height), _texture(texrue){
+Entity::Entity(int x,int y,int width,int height,SDL_Texture *texrue)  
+: _position(x,y), _width(width),_height(height), _texture(texrue){
     _currentFrame.x = 0;
     _currentFrame.y = 0;
-    _currentFrame.w = 32;
-    _currentFrame.h = 32;
+    _currentFrame.w = width;
+    _currentFrame.h = height;
 }
 
 int Entity::getX() const{ return _position.getX(); }

@@ -1,7 +1,7 @@
 #include "planet.hpp"
 
-planet::planet(vector2d<int> position,float radius,float mass,SDL_Texture *texture) 
-:  Entity(position,radius,radius,texture), _mass(mass) {
+planet::planet(int x,int y,float radius,float mass,SDL_Texture *texture) 
+:  Entity(x,y,radius,radius,texture), _mass(mass) {
     _velocity.setX(0);
     _velocity.setY(0);
 }
