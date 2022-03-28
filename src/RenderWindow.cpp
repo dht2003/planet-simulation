@@ -1,17 +1,17 @@
 #include "RenderWindow.hpp"
 
-RenderWindow::RenderWindow(std::string title,unsigned int width, unsigned int height) : window(NULL) , render(NULL){
-    widnow = SDL_CreateWindow(title,SDL_WINPOS_UNDEFINED,SDL_WINPOS_UNDEFINED,width,height,SDL_WINDOW_SHOWN);
+RenderWindow::RenderWindow(const char *title,unsigned int width, unsigned int height) : window(NULL) , renderer(NULL){
+    window = SDL_CreateWindow(title,SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,width,height,SDL_WINDOW_SHOWN);
     
     if (window == NULL) 
-        throw std::invalid_argument("[Error] Cannot create windw\n");
+        throw std::invalid_argument("[Error] Cannot create window\n");
     
-    render = SDL_CreateRender(window,-1,SDL_RENDER_ACCLERATED);
+    renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 }
 
-SDL_Texture * RenderWindow::loadTexture(std::string file_path) {
+SDL_Texture * RenderWindow::loadTexture(const char * file_path) {
     SDL_Texture * texture = NULL;
-    texture = IMG_loadTexture(render,file_path);
+    texture = IMG_LoadTexture(renderer,file_path);
     if (texture == NULL)
         throw std::invalid_argument("[Error] Cannot load texture");
     return texture;
@@ -19,10 +19,11 @@ SDL_Texture * RenderWindow::loadTexture(std::string file_path) {
 }
 
 void RenderWindow::render(Entity &entity) {
-    SDL_Rect src.x = entity.getCurrentFrame().x;
-    SDL_Rect src.y = entity.getCurrentFrame().y;
-    SDL_Rect src.w = entity.getCurrentFrame().w;
-    SDL_Rect src.h = entity.getCurrentFrame().h;
+    SDL_Rect src;
+    src.x = entity.getCurrentFrame().x;
+    src.y = entity.getCurrentFrame().y;
+    src.w = entity.getCurrentFrame().w;
+    src.h = entity.getCurrentFrame().h;
 
     SDL_Rect dst;
     dst.x = entity.getX();
@@ -30,18 +31,18 @@ void RenderWindow::render(Entity &entity) {
     dst.w = entity.getWidth();
     dst.h = entity.getHeight();
     
-    SDL_RenderCopy(render,texture,&src,&dst);
+    SDL_RenderCopy(renderer,entity.getTexture(),&src,&dst);
 }
 
 void RenderWindow::display() {
-    SDL_RenderPresent(render);
+    SDL_RenderPresent(renderer);
 }
 
 void RenderWindow::clear() {
-    SDL_RenderClear(render);
+    SDL_RenderClear(renderer);
 }
 
-RenderWindow::cleanUp() {
+void RenderWindow::cleanUp() {
     SDL_DestroyWindow(window);
 }
 

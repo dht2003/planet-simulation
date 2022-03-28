@@ -7,13 +7,13 @@
 
 class Entity {
     public:
-        Entity(vector2d<int> position,SDL_Texture *texture);
-        int getX();
-        int getY();
-        int getWidth();
-        int getHeight();
-        SDL_Rect getCurrentFrame();
-        SDL_Texture *getTexture();
+        Entity(vector2d<int> position,int width, int height,SDL_Texture *texture);
+        int getX() const;
+        int getY() const;
+        int getWidth() const;
+        int getHeight() const;
+        SDL_Rect getCurrentFrame() const;
+        SDL_Texture *getTexture() const;
         void setX(int x);
         void setY(int y);
         void setWidth(int width);
@@ -24,4 +24,4 @@ class Entity {
         int _width, _height;
         SDL_Rect _currentFrame;
         SDL_Texture *_texture;
-}
+};

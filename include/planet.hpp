@@ -3,21 +3,16 @@
 #include <cmath>
 #include <SDL2/SDL.h>
 #include "vector2d.hpp"
+#include "Entity.hpp"
 
-class planet {
+class planet : public Entity  {
     private:
-        vector2d<int> _position;
         float _radius;
         float _mass;
         vector2d<float> _velocity;
-        SDL_Color _color;
 
     public:
-        int getX() const;
-        int getY() const;
-        vector2d<int> getPosition();
-        void setX(int x);
-        void setY(int y);
+        planet(vector2d<int> position,float radius,float mass,SDL_Texture *texture);
         float getRadius();
         float getMass() const;
         float getXVel() const;

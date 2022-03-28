@@ -1,14 +1,10 @@
 #include "planet.hpp"
 
-int planet::getX() const { return _position.getX(); }
-
-int planet::getY() const {return _position.getY(); }
-
-vector2d<int> planet::getPosition()  {return _position; }
-
-void planet::setX(int x) { _position.setX(x); }
-
-void planet::setY(int y) {_position.setY(y); }
+planet::planet(vector2d<int> position,float radius,float mass,SDL_Texture *texture) 
+:  Entity(position,radius,radius,texture), _mass(mass) {
+    _velocity.setX(0);
+    _velocity.setY(0);
+}
 
 float planet::getRadius() { return _radius; }
 
@@ -24,7 +20,4 @@ void planet::setYVel(float yVel) { _velocity.setY(yVel); }
 
 void planet::addVelocity(vector2d<float> velocity) { _velocity = _velocity + velocity; }
 
-SDL_Color planet::getPlanetColor() {return _color; }
-
-void planet::setPlanetColor(SDL_Color color) {_color = color; }
 
