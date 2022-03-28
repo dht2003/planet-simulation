@@ -47,4 +47,23 @@ struct vector2d
             vec.setY(getY() / scalar); 
             return vec;
         };
+        void operator += (vector2d<T> const &other) {
+            _x += other.getX();
+            _y += other.getY();
+        }
+
+        void operator -= (vector2d<T> const &other) {
+            _x -= other.getX();
+            _y -= other.getY();
+        }
+
+        void operator *= (T scalar) {
+            _x *= scalar;
+            _y *= scalar;
+        }
+
+        void operator /= (T scalar) {
+            _x /= scalar;
+            _y /= scalar;
+        }
 };

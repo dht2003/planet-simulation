@@ -16,6 +16,8 @@ class Entity {
         SDL_Texture *getTexture() const;
         void setX(int x);
         void setY(int y);
+        void setPosition(int x,int y);
+        void move(int x,int y);
         void setWidth(int width);
         void setHeight(int height);
     private:

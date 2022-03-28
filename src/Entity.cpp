@@ -24,6 +24,16 @@ void Entity::setX(int x) { _position.setX(x); }
 
 void Entity::setY(int y) {_position.setY(y); }
 
+void Entity::move(int x, int y) {
+    vector2d<int> vec(x,y);
+    _position += _position;
+}
+
+void Entity::setPosition(int x,int y) {
+    _position.setX(x);
+    _position.setY(y);
+}
+
 void Entity::setWidth(int width) {_width = width;}
 
 void Entity::setHeight(int height) {_height = height; _currentFrame.h = height;}
