@@ -13,8 +13,8 @@ struct vector2d
         vector2d() : _x(0.0) , _y(0.0) {}
         vector2d(T x,T y) : _x(x) , _y(y) {}
         ~vector2d() {};
-        float getX() const {return _x;};
-        float getY() const {return _y;};
+        double getX() const {return _x;};
+        double getY() const {return _y;};
         void setX(T x) {_x = x; };
         void setY(T y) {_y = y; };
         void print() {
@@ -38,7 +38,7 @@ struct vector2d
             vec.setY(getY() * scalar); 
             return vec;
         };
-        float operator * (vector2d<T> const &other) {
+        double operator * (vector2d<T> const &other) {
             return getX() * other.getX() + getY() * other.getY();
         };
         vector2d<T> operator / (T scalar) {

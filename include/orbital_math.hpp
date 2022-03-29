@@ -6,20 +6,22 @@
 namespace orbital_math {
     const double G = 6.6742E-11;
 
-    const double AU = 1.495978707E11; // TODO
+    const double AU = 1.495978707E11; 
 
-    const double TIMESSTAMP = 0;
+    const double TIMESSTAMP = 3600 * 24;
 
-    float distance(planet plant1, planet plant2);
+    const double SCALE = 250 / AU;
 
-    float theta(planet plant1, planet plant2);
+    double distance(planet plant1, planet plant2);
 
-    float GForce(planet plant1, planet plant2);
+    double theta(planet plant1, planet plant2);
 
-    float GForceX(planet plant1, planet plant2);
+    double GForce(planet plant1, planet plant2);
 
-    float GForceY(planet plant1, planet plant2);
+    double GForceX(planet plant1, planet plant2);
 
-    float planetVelocity(planet p , float gForce,float timestamp);
+    double GForceY(planet plant1, planet plant2);
+
+    double planetVelocity(planet p , double gForce,double timestamp);
 
 }

@@ -1,6 +1,6 @@
 #include "Entity.hpp"
 
-Entity::Entity(int x,int y,int width,int height,SDL_Texture *texrue)  
+Entity::Entity(double x,double y,double width,double height,SDL_Texture *texrue)  
 : _position(x,y), _width(width),_height(height), _texture(texrue){
     _currentFrame.x = 0;
     _currentFrame.y = 0;
@@ -8,32 +8,34 @@ Entity::Entity(int x,int y,int width,int height,SDL_Texture *texrue)
     _currentFrame.h = height;
 }
 
-int Entity::getX() const{ return _position.getX(); }
+double Entity::getX() const{ return _position.getX(); }
 
-int Entity::getY() const{ return _position.getY(); }
+double Entity::getY() const{ return _position.getY(); }
 
-int Entity::getWidth()  const {return _width;}
+vector2d<double> Entity::getPosition() const {return _position; }
 
-int Entity::getHeight() const {return _height;}
+double Entity::getWidth()  const {return _width;}
+
+double Entity::getHeight() const {return _height;}
 
 SDL_Rect Entity::getCurrentFrame() const {return _currentFrame;}
 
 SDL_Texture *Entity::getTexture()  const {return _texture; }
 
-void Entity::setX(int x) { _position.setX(x); }
+void Entity::setX(double x) { _position.setX(x); }
 
-void Entity::setY(int y) {_position.setY(y); }
+void Entity::setY(double y) {_position.setY(y); }
 
-void Entity::move(int x, int y) {
-    vector2d<int> vec(x,y);
-    _position += _position;
+void Entity::move(double x, double y) {
+    vector2d<double> distance(x,y);
+    _position += distance;
 }
 
-void Entity::setPosition(int x,int y) {
+void Entity::setPosition(double x,double y) {
     _position.setX(x);
     _position.setY(y);
 }
 
-void Entity::setWidth(int width) {_width = width;}
+void Entity::setWidth(double width) {_width = width;}
 
-void Entity::setHeight(int height) {_height = height; _currentFrame.h = height;}
+void Entity::setHeight(double height) {_height = height; _currentFrame.h = height;}

@@ -7,19 +7,20 @@
 
 class planet : public Entity  {
     private:
-        float _radius;
-        float _mass;
-        vector2d<float> _velocity;
+        double _radius;
+        double _mass;
+        vector2d<double> _velocity;
 
     public:
-        planet(int x, int y,float radius,float mass,SDL_Texture *texture);
-        float getRadius();
-        float getMass() const;
-        float getXVel() const;
-        float getYVel() const;
-        void setXVel(float xVel);
-        void setYVel(float yVel);
-        void addVelocity(vector2d<float> velocity);
-        SDL_Color getPlanetColor();
+        planet(double x, double y,double radius,double mass,SDL_Texture *texture);
+        double getRadius();
+        double getMass() const;
+        double getXVel() const;
+        double getYVel() const;
+        vector2d<double> getVel() const;
+        void setXVel(double xVel);
+        void setYVel(double yVel);
+        void addVelocity(vector2d<double> velocity);
+        void update(double time);
         void setPlanetColor(SDL_Color color);
 };
